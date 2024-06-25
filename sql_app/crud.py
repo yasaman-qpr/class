@@ -16,7 +16,6 @@ def create_cousre(db: Session, course: schemas.Course):
     return db_course
 
 
-
 def delete_course (db,id):
     query= delete(models.course).where(models.course.course_id==id)
     db.execute(query)
