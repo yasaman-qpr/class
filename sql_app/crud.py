@@ -1,6 +1,9 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import delete , update
-from . import models, schemas
+import sys
+from pathlib import Path 
+sys.path[0]=str(Path(sys.path[0]).parent)
+from sql_app import models, schemas
 
 
 def get_course(db: Session, course_id: int):
@@ -21,13 +24,6 @@ def delete_course (db,id):
     db.execute(query)
     db.commit()
 
-
-
-def update_course(db,id,date):
-    query= update(models.course).where(models.course.course_id==id).values(**data.dict())
-    db.execute(query)
-    db.commit()
-    db.refresh()
 
 
 
