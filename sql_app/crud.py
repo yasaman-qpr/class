@@ -27,6 +27,7 @@ def update_course(db,id,date):
     query= update(models.course).where(models.course.course_id==id).values(**data.dict())
     db.execute(query)
     db.commit()
+    db.refresh()
 
 
 
