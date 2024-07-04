@@ -1,40 +1,42 @@
-from typing import Union
-
 from pydantic import BaseModel
-class student(BaseModel):
+
+
+
+class Student(BaseModel):
     STid: str
     Fname: str 
     Lname: str
     fathername: str
-    Ids: int
+    birth: str
+    Ids: str
     borncity: str
     address: str
     zipcode: int
-    cphone: int
-    hphone: int
+    cphone: str
+    hphone: str
     department: str
     major: str
     married: str
-    Ids: int
-    courseids: int
-    lids: int
+    Id: str
+    Scourseids: str
+    lids: str
 
 
 
 class Ostad(BaseModel):
-    lid: str
+    lid: int
     Fname: str
     Lname: str 
-    ostadid : int 
+    id : str 
     department: str 
     major: str 
     Birth: str 
     borncity: str
     address: str
     zipcode: int
-    cphone: int
-    hphone:int
-    lcourseids:int
+    cphone: str
+    hphone: str
+    lcourseids: str
 
 
 
