@@ -104,7 +104,7 @@ def delete_ostad(ostad_id:int,db:Session=Depends(get_db)):
 #درس ها
 @app.post("/CreatCou/", response_model=schemas.Course)
 def create_course(course: schemas.Course, db: Session = Depends(get_db)):
-    db_course = crud.get_course(db,cid=course.cid)
+    db_course = crud.get_course(db,course.cid)
     if db_course:
         raise HTTPException(status_code=400, detail="Course already exists")
     return crud.create_course(db,course)
