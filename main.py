@@ -1,11 +1,13 @@
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
-import sys
-from pathlib import Path 
-sys.path[0]=str(Path(sys.path[0]).parent)
+from sql_app import crud , models
 import schemas
-from .sql_app import crud , models
-from .sql_app.database import SessionLocal,engine
+from sql_app.database import SessionLocal, engine
+
+#import sys
+#from pathlib import Path 
+#sys.path[0]=str(Path(sys.path[0]).parent)
+
 
 
 
@@ -64,8 +66,8 @@ def delete_student(student_id:int,db:Session=Depends(get_db)):
 
 #استاد ها
 @app.post("/Creatostad/", response_model=schemas.Ostad)
-def create_ostad(ostad: schemas.ostad, db: Session = Depends(get_db)):
-    db_ostad = crud.get_ostad(db,Lid=ostad.Lid)
+def create_ostad(ostad: schemas.Ostad, db: Session = Depends(get_db)):
+    db_ostad = crud.get_ostad(db,lid=ostad.lid)
     if db_ostad:
         raise HTTPException(status_code=400, detail="ostad already exists")
     return crud.create_ostad(db=db, ostad=ostad)
@@ -74,7 +76,7 @@ def create_ostad(ostad: schemas.ostad, db: Session = Depends(get_db)):
 
 @app.get("/Getostad/{ostad_id}", response_model=schemas.Ostad)
 def read_Ostad(ostad_id: int, db: Session = Depends(get_db)):
-    db_ostad = crud.get_ostad(db, ostad_id=ostad_id)
+    db_ostad = crud.get_ostad(db,ostad_id)
     if db_ostad is None:
         raise HTTPException(status_code=404, detail="ostad not found")
     return db_ostad
@@ -88,12 +90,12 @@ def update_ostad(ostad_id: str,ostad:schemas.Ostad,db:Session = Depends(get_db))
 
 
 
-@app.get("/delostad/{ostad_id}",response_model=schemas.Ostad)
+@app.delete("/delostad/{ostad_id}",response_model=schemas.Ostad)
 def delete_ostad(ostad_id:int,db:Session=Depends(get_db)):
-    db_ostad =crud.get_ostad(db,Ostad_id=ostad_id)
+    db_ostad =crud.get_ostad(db,ostad_id)
     if db_ostad is None:
         raise HTTPException(status_code=404, detail="ostad notfound")
-    crud.removeostad(db,ostad_id=ostad_id)
+    crud.deleteostad(db,ostad_id)
     return db_ostad
 
 
@@ -105,13 +107,13 @@ def create_course(course: schemas.Course, db: Session = Depends(get_db)):
     db_course = crud.get_course(db,cid=course.cid)
     if db_course:
         raise HTTPException(status_code=400, detail="Course already exists")
-    return crud.create_course(db=db, course=course)
+    return crud.create_course(db,course)
 
 
 
 @app.get("/GetCou/{course_id}", response_model=schemas.Course)
 def read_course(course_id: int, db: Session = Depends(get_db)):
-    db_course = crud.get_course(db, course_id=course_id)
+    db_course = crud.get_course(db,course_id)
     if db_course is None:
         raise HTTPException(status_code=404, detail="Course not found")
     return db_course
@@ -126,10 +128,10 @@ def update_course(course_id: str,course:schemas.Course,db:Session = Depends(get_
 
 
 
-@app.get("/delcourse/{course_id}",response_model=schemas.Course)
+@app.delete("/delcourse/{course_id}",response_model=schemas.Course)
 def delete_course(course_id:int,db:Session=Depends(get_db)):
-    db_course = crud.get_course(db,Course_id=course_id)
+    db_course = crud.get_course(db,course_id)
     if db_course is None:
         raise HTTPException(status_code=404, detail="Course notfound")
-    crud.removecourse(db,course_id=course_id)
+    crud.deletecourse(db,course_id)
     return db_course

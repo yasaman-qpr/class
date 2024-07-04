@@ -1,8 +1,8 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
+from sqlalchemy import Boolean, Column, ForeignKey, String, Integer
 from sql_app.database import Base
 
 #دانشجو ها 
-class student(Base):
+class Student(Base):
     __tablename__="student"
 
     STid = Column(String,primary_key=True)
@@ -10,18 +10,18 @@ class student(Base):
     Lname=Column(String)
     fathername=Column(String)
     birth=Column(String)
-    Ids = Column(Integer) 
+    Ids = Column(String) 
     borncity = Column(String)
     address = Column(String)
     zipcode = Column(Integer)
-    cphone = Column(Integer)
-    hphone = Column(Integer)
+    cphone = Column(String)
+    hphone = Column(String)
     department = Column(String)
     major = Column(String)
     married = Column(String)
-    ID = Column(Integer)
-    Scourseids = Column(Integer)
-    lids = Column(Integer)
+    id = Column(String)
+    Scourseids = Column(String)
+    lids = Column(String)
 
 
 
@@ -29,19 +29,19 @@ class student(Base):
 class Ostad(Base):
     __tablename__ = "Ostad"
 
-    lid = Column(String,primary_key=True)
+    lid = Column(Integer,primary_key=True)
     Fname = Column(String)
     Lname = Column(String)
-    ostadid = Column(Integer)
+    id = Column(String)
     department = Column(String)
     major = Column(String)
     Birth = Column(String)
     borncity = Column(String)
     address = Column(String)
     zipcode = Column(Integer)
-    cphone = Column(Integer)
-    hphone = Column(Integer)
-    lcourseids = Column(Integer)
+    cphone = Column(String)
+    hphone = Column(String)
+    lcourseids = Column(String)
 
                      
                      
