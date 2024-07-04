@@ -6,6 +6,7 @@ class student(BaseModel):
     Fname: str 
     Lname: str
     fathername: str
+    birth: str
     Ids: int
     borncity: str
     address: str
@@ -16,7 +17,7 @@ class student(BaseModel):
     major: str
     married: str
     Ids: int
-    courseids: int
+    Scourseids: int
     lids: int
 
 

@@ -1,7 +1,5 @@
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
-
-
-from .database import Base
+from sql_app.database import Base
 
 #دانشجو ها 
 class student(Base):
@@ -11,6 +9,7 @@ class student(Base):
     Fname= Column(String)
     Lname=Column(String)
     fathername=Column(String)
+    birth=Column(String)
     Ids = Column(Integer) 
     borncity = Column(String)
     address = Column(String)
@@ -21,7 +20,7 @@ class student(Base):
     major = Column(String)
     married = Column(String)
     ID = Column(Integer)
-    courseids = Column(Integer)
+    Scourseids = Column(Integer)
     lids = Column(Integer)
 
 
