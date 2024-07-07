@@ -3,12 +3,12 @@ from pydantic import BaseModel
 
 
 class Student(BaseModel):
-    STid: str
+    STID: str
     Fname: str 
     Lname: str
     fathername: str
     birth: str
-    Ids: str
+    IDS: str
     borncity: str
     address: str
     zipcode: int
@@ -17,17 +17,22 @@ class Student(BaseModel):
     department: str
     major: str
     married: str
-    Id: str
+    ID: str
     Scourseids: str
-    lids: str
-
+    LIDs: str
+    
+class Student_out(BaseModel):
+    STID: str
+    Fname: str
+    Lname: str
+    fathername: str
 
 
 class Ostad(BaseModel):
-    lid: int
+    LID: int
     Fname: str
     Lname: str 
-    id : str 
+    ID : str 
     department: str 
     major: str 
     Birth: str 
@@ -38,10 +43,15 @@ class Ostad(BaseModel):
     hphone: str
     lcourseids: str
 
+class Ostad_out(BaseModel):
+    LID: int
+    Fname: str
+    Lname: str
+    ID: str
 
 
 class Course(BaseModel):
-    cid: str
+    CID: str
     Cname: str
     department : str
     credit : int
