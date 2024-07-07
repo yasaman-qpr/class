@@ -31,7 +31,7 @@ def update_student(db:Session, student_id: str, student : models.Student):
         return db_student
     else:
         for key , value in student.dict().items():
-            setattr(db_student, key, value)
+            setattr(db_student, key , value)
         db.commit()
         db.refresh(db_student)
         return db_student

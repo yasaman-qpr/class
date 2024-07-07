@@ -1,6 +1,7 @@
 from sqlalchemy import Column, String, Integer
 from sql_app.database import Base
 
+
 #دانشجو ها 
 class Student(Base):
     __tablename__="Student"
@@ -53,6 +54,3 @@ class Course(Base):
     Cname = Column(String)
     department = Column(String)
     credit= Column(Integer)
-
-
-

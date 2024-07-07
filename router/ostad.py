@@ -29,7 +29,7 @@ def create_ostad(ostad: schemas.Ostad, db: Session = Depends(get_db)):
     for course in lcourseid:
         db_ostad_course = crud.get_course(db,course)
         if db_ostad_course is None:
-            error["lcourseid"] = f"این ترم {course} برای تدریس موجود نیست"
+            error[course] = f"این ترم {course} برای تدریس موجود نیست"
     if error:
         raise HTTPException(status_code= 404 , detail=error)
     return crud.create_ostad(db, ostad)

@@ -29,11 +29,11 @@ def create_student(student: schemas.Student, db: Session = Depends(get_db)):
     for course in scourseids:
         db_students_course = crud.get_course(db,course)
         if db_students_course is None:
-            error["scourseids"] = f"این ترم {course} ارایه نمیشود"
+            error[course] = f"این ترم {course} ارایه نمیشود"
     for ostad in lids:
         db_student_ostad = crud.get_ostad(db,ostad)
         if db_student_ostad is None:
-            error["lids"] = f" استاد {ostad} ارایه نمی دهد"
+            error[ostad] = f" استاد {ostad} ارایه نمی دهد"
     if error:
         raise HTTPException(detail=error , status_code= 404)
     return crud.create_student(db, student)
@@ -63,11 +63,11 @@ def update_student(student_id: str, student: schemas.Student, db: Session = Depe
     for course in scourseids:
         db_students_course = crud.get_course(db,course)
         if db_students_course is None:
-            error["scourseids"] = f"این ترم {course} ارایه نمیشود"
+            error[course] = f"این ترم {course} ارایه نمیشود"
     for ostad in lids:
         db_student_ostad = crud.get_ostad(db,ostad)
         if db_student_ostad is None:
-            error["lids"] =f" استاد {ostad} ارایه نمی دهد"
+            error[ostad] =f" استاد {ostad} ارایه نمی دهد"
     if error:
         raise HTTPException(detail=error , status_code= 404)
     return db_student
