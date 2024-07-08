@@ -1,12 +1,6 @@
 from sqlalchemy.orm import Session
 import schemas 
 from sql_app import models
-
-
-
-
-
-
 #دانشجو ها
 def get_student(db: Session, student_id: int):
     return db.query(models.Student).filter(models.Student.STID == student_id).first()
